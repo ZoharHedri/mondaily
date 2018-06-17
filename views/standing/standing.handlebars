@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        {{#each tables}}
+        <div class="col-md-12">
+            <div class="standing-warper">
+                <div class="standing-title">{{getGroupName league_id}}</div>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Rank</th>
+                            <th>Teams</th>
+                            <th>Matches</th>
+                            <th>Won</th>
+                            <th>Drawn</th>
+                            <th>Lost</th>
+                            <th>Scored</th>
+                            <th>Conceded</th>
+                            <th>Diff</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody class="standing-content">
+                        {{#each teams}}
+                        <tr>
+                            <th scope="row">{{rank}}</th>
+                            <td>
+                                <img class="standing-team-flag" src="/img/icon set 3/SVG/{{toLowerCase name}}.svg " alt="{{name}} flag icon">
+                                <a class="standing-team-name" href="#">{{name}}</a>
+                            </td>
+                            <td>{{matches}}</td>
+                            <td>{{won}}</td>
+                            <td>{{drawn}}</td>
+                            <td>{{lost}}</td>
+                            <td>{{goals_scored}}</td>
+                            <td>{{goals_conceded}}</td>
+                            <td>{{goal_diff}}</td>
+                            <td>{{points}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

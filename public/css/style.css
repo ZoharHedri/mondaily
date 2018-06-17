@@ -1,0 +1,23 @@
+.standing-warper {
+  width: 890px;
+  margin-bottom: 70px; }
+  .standing-warper .standing-title {
+    width: 100%;
+    background: linear-gradient(to right, #f00000, #dc281e);
+    font-size: 24px;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+    font-weight: 700; }
+  .standing-warper .standing-content {
+    font-family: 'Raleway', sans-serif; }
+    .standing-warper .standing-content .standing-team-flag {
+      width: 50px; }
+    .standing-warper .standing-content .standing-team-name {
+      font-size: 20px;
+      margin-left: 15px; }
+    .standing-warper .standing-content tr {
+      background-color: #e9ecef; }
+      .standing-warper .standing-content tr:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        cursor: pointer; }
