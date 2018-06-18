@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use('/users', usersRoute);
 app.use('/chats', chatsRoute);
 app.use('/reviews', reviewsRoute);
-app.use('/matches', reviewsRoute);
+app.use('/matches', matchesRoute);
 app.use('/standing', standingRoute);
 
 app.get('/', (req, res) => {
