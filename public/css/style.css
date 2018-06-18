@@ -21,3 +21,17 @@
       .standing-warper .standing-content tr:hover {
         background-color: rgba(0, 0, 0, 0.1);
         cursor: pointer; }
+
+.review-box {
+  padding: 34px 50px;
+  width: 300px;
+  border-style: solid; }
+
+.post-review .review-text {
+  width: 100%; }
+
+.post-review .modal-body {
+  padding: 0px; }
+  .post-review .modal-body .review-text {
+    border: none;
+    height: 200px; }
