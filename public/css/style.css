@@ -21,3 +21,42 @@
       .standing-warper .standing-content tr:hover {
         background-color: rgba(0, 0, 0, 0.1);
         cursor: pointer; }
+
+.match {
+  width: 830px;
+  background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); }
+  .match .match-warp .match-location {
+    font-size: 18px;
+    font-style: italic; }
+  .match .match-warp .row {
+    border-bottom: 5px solid rgba(0, 0, 0, 0.1); }
+    .match .match-warp .row:hover {
+      background: #00171F;
+      color: white; }
+      .match .match-warp .row:hover .match-team-name {
+        cursor: pointer; }
+      .match .match-warp .row:hover .match-icon-flag {
+        cursor: pointer; }
+  .match .match-warp .match-time-container {
+    text-align: center;
+    position: relative;
+    height: 100%;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif; }
+    .match .match-warp .match-time-container .match-time {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+  .match .match-warp .match-team-container .match-team-name {
+    display: inline-block;
+    font-size: 24px; }
+  .match .match-warp .match-team-container .match-icon-flag {
+    width: 90px;
+    display: inline-block; }
+  .match .match-date {
+    background: #00A8E8;
+    color: white;
+    font-size: 30px;
+    font-family: 'Nunito', sans-serif; }
