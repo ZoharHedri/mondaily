@@ -1,60 +1,76 @@
-.match{
-    width: 830px;
-    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    
-    .match-warp{
-        .match-location{
-            font-size: 18px;
-            font-style: italic;
-        }
-        .row{
-            border-bottom: 5px solid rgba(0, 0, 0, .1);
-            &:hover{
-                background: #00171F;
-                color:white;
-                
+.matches-root{
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-areas: "a a a a a . b b b b b b";
+    .match{
+        grid-area: a;
+        background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        
+        .match-warp{
+            .match-location{
+                font-size: 18px;
+                font-style: italic;
+            }
+            .row{
+                border-bottom: 5px solid rgba(0, 0, 0, .1);
+                &:hover{
+                    background: #00171F;
+                    color:white;
+                    
+                    .match-team-name{
+                        cursor: pointer;
+                    }
+                    .match-icon-flag{
+                        cursor: pointer;
+                    }
+                }
+            
+            }
+            
+            .match-time-container{
+                text-align: center;
+                position: relative;
+                height: 100%;
+                font-size: 18px;
+                font-weight: 700;
+                font-family: 'Nunito', sans-serif;
+                .match-time{
+                    position: absolute;
+                    top: 50%;
+                    left:50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            
+            .match-team-container{
                 .match-team-name{
-                    cursor: pointer;
+                    display: inline-block;
+                    font-size:18px;
                 }
                 .match-icon-flag{
-                    cursor: pointer;
+                    width: 70px;
+                    display: inline-block;
                 }
             }
-           
-        }
-        
-        .match-time-container{
-            text-align: center;
-            position: relative;
-            height: 100%;
-            font-size: 30px;
-            font-weight: 700;
-            font-family: 'Nunito', sans-serif;
-            .match-time{
-                position: absolute;
-                top: 50%;
-                left:50%;
-                transform: translate(-50%, -50%);
-            }
-        }
-        
-        .match-team-container{
-            .match-team-name{
-                display: inline-block;
-                font-size:24px;
-            }
-            .match-icon-flag{
-                width: 90px;
-                display: inline-block;
-            }
-        }
-}
+    }
 
-    .match-date{
-        background: #00A8E8;
-        color:white;
-        font-size:30px;
-        font-family: 'Nunito', sans-serif;
-        
+        .match-date{
+            background: #00A8E8;
+            color:white;
+            font-size:24px;
+            font-family: 'Nunito', sans-serif;
+            
+        }
+    }
+
+    .today-match{
+        grid-area: b;
+        .match{
+            .match-warp{
+                .match-date{
+                    background: #EA3546;
+                }
+            }
+        }
     }
 }

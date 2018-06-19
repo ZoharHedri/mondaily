@@ -69,10 +69,17 @@ module.exports = {
         let year = newDate.getFullYear();
         return dayName + ', ' + MonthName + ' ' + DayOfMonth + ' ' + year;
     },
-    checkTime: function (time, score) {
-        if (time === 'FT') {
-            return score;
+    checkTime: function (status, time, datetime, homeScore, awayScore) {
+        if (status === 'in progress') {
+            return time + ' ' + homeScore + ' - ' + awayScore;
         }
-        return time;
+        if (status === 'completed') {
+            return homeScore + ' - ' + awayScore;
+        }
+
+        if (status === 'future') {
+            let date = new Date(datetime);
+            return (date.getUTCHours() + 3) + ':' + date.getUTCMinutes() + '0';
+        }
     }
 }
