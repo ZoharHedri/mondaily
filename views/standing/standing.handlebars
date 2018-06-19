@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
     <div class="row">
         {{#each tables}}
         <div class="col-md-12">
@@ -24,7 +24,9 @@
                         <tr>
                             <th scope="row">{{rank}}</th>
                             <td>
-                                <img class="standing-team-flag" src="/img/icon set 3/SVG/{{toLowerCase name}}.svg " alt="{{name}} flag icon">
+                                {{!--
+                                <img class="standing-team-flag" src="/img/icon set 3/SVG/{{toLowerCase name}}.svg " alt="{{name}} flag icon"> --}}
+                                <img class="standing-team-flag" src="{{getFifaIcon name}} " alt="{{name}} flag icon">
                                 <a class="standing-team-name" href="#">{{name}}</a>
                             </td>
                             <td>{{matches}}</td>
