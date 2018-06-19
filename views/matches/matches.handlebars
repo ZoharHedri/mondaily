@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="match">
+        {{#each sortedMatches}}
+        <div class="match-warp">
+            <div class="match-date">{{formatDate date}}</div>
+            {{#each matches}} {{#if location}}
+            <div class="match-location text-center">{{location}}</div>
+            {{/if}}
+            <div class="row no-gutters p-2" data-id={{id}}>
+                <div class="col-md-5">
+                    <div class="match-team-container text-right">
+                        <div class="match-team-name">
+                            {{home_name}}
+                        </div>
+                        <div class="match-icon-flag">
+                            <img width="100%" src="{{getFifaIcon home_name}}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 ">
+                    <div class="match-time-container">
+                        <p class="match-time">{{checkTime time score}}</p>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="match-team-container">
+                        <div class="match-icon-flag">
+                            <img width="100%" src="{{getFifaIcon away_name}}" alt="">
+                        </div>
+                        <div class="match-team-name">
+                            {{away_name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{/each}}
+
+    </div>
+</div>
+
+</div>

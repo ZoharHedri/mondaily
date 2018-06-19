@@ -1,6 +1,7 @@
 
 const express = require('express');
 const Router = express.Router();
+const User = require('../model/userModel');
 
 Router.get('/', (req, res) => {
     res.send("hello");
@@ -18,13 +19,15 @@ Router.get('/register', (req, res) => {
 
 Router.post('/register', (req, res) => {
 
-    //console.log(req.body.userName + ' ' + req.body.usereEmail + ' ' + req.body.userPasswor) good
+    console.log(req.body.userName + ' ' + req.body.usereEmail + ' ' + req.body.userCountry + ' ' + req.body.userPasswor) //good
+
     //save to DB
-    // var userModel = mongoose.model('user', userSchema);
-    // userModel.create({
+
+    // User.create({ //good
     //     user_name: req.body.userName,
-    //     user_email: usereEmail,
-    //     password: userPasswor
+    //     user_email: req.body.usereEmail,
+    //     password: req.body.userPasswor,
+    //     country: req.body.userCountry
     // }, function (err, data) {
     //     if (err) {
     //         return console.error(err);
@@ -32,19 +35,26 @@ Router.post('/register', (req, res) => {
     //     console.log(data);
     // });
 
-
-    res.render('users/login'); //views
+    //views
+    res.send('user saved');//check why not working
 });
 
 
 Router.post('/login', (req, res) => {
 
-    // store, a JS object as JSON string, in local storage under the key "user"
-    // var saveToLocalStorage = function () {
-    //     localStorage.setItem('user', JSON.stringify({id: ""}));
-    // }
+    //need to check the user name and the password and return the _id 
+    //and in the client i need to save _id to localstorage
+    let userlog = req.body.userNameLogin;
+    let passwordlog = req.body.passwordLogin;
 
-    // saveToLocalStorage();
+    User.findOne({ user_name: userlog, password: passwordlog }, { _id: 1, user_name: 1, country: 1 }, (err, data) => {
+        if (err) {
+            return console.error(err);
+        }
+        console.log(data);//good //data = { _id: 5b292ee72ad0582d00717cfb, user_name: amitay,country: 'Brasil' }
+        //res.send("find user");
+        res.json(data);//send the found data in json
+    });
 
 });
 
