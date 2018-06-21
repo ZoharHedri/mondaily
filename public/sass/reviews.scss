@@ -1,8 +1,12 @@
 .review-box{
-    padding: 34px 50px;
+    padding: 28px 25px;
     width: 300px;
     border-style: solid;
+    margin: -20px 34px;
     // border-width: 5px;
+    .btn{
+        margin-bottom: 30px;
+    }
 }
 .post-review{
     .review-text{
@@ -17,4 +21,54 @@
             height: 200px;
         }
     }
+}
+.container-match{
+    width: 500px;
+    margin-left: 680px;
+    text-align: center;
+    .row{
+        height: 30px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 30px;
+        color:white;  
+        text-shadow:0 3px 5px rgba(0, 0, 0, 0.5);
+        font-size: 20px;
+        .home-team{
+            height: 100%;
+            background-color: #06b500;
+            border-top-left-radius: 30px;
+        }
+        .score{
+            border: solid grey 1px;
+            height: 100%;
+            background-color: white;
+            color:black;            
+        }
+        .away-team{
+            height: 100%;
+            background-color: #f93737;;
+            border-top-right-radius: 30px;
+        }
+    }
+}
+.post-container{
+    display: inline-block;
+    width:400px;
+}
+
+.header-post{
+    display: inline-block;
+}
+
+.head-post{
+    height: 100%;
+    width: 100%;
+}
+img{
+    height: 15%;
+    width: 15%;
+}
+.content-post{
+    margin-top:15px;
 }

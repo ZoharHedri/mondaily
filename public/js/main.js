@@ -8,6 +8,7 @@ $('.post-review').on('click', () => {
     }
     let reviewText = $(this).find('review-text').val();
     let matchId = JSON.parse(localStorage.getItem('match'));
+    let user = JSON.parse(localStorage.getItem('user'));
 })
 
 ajaxPostReview = (postReviewObject) => {
@@ -24,7 +25,13 @@ ajaxPostReview = (postReviewObject) => {
 
 }
 
-$.ajax({
-    method: 'GET',
+// $.ajax({
+//     method: 'GET',
+//     url: '/reviews/match/getMatch',
+//     dataType: 'json'
+// })
+//     .then((match) => {
+//         localStorage.setItem('match', JSON.stringify(match));
+//     })
 
-})
+
