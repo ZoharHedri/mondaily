@@ -1,9 +1,9 @@
 const express = require('express');
 const Router = express.Router();
-const User = require('../model/userModel');
+const Chat = require('../model/chatModel');
 
-Router.post('/', (req, res) => {
-
+Router.get('/', (req, res) => {
+    res.render('chats/chat');
 });
 
 module.exports = Router;

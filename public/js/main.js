@@ -2,14 +2,7 @@
 //http://worldcup.sfg.io
 
 
-
-// setInterval(function updateStanding() {
-//     $.ajax({
-//         type: 'GET',
-//         url: '/standing/update'
-//     });
-// }, 1000 * 60 * 1 * 1);nam
-
+//register
 $("#Regbutton").on('click', function () {
 
     let userName = $("body").find("#textinput").val();
@@ -30,7 +23,7 @@ $("#Regbutton").on('click', function () {
 
 });
 
-
+//login
 $("#login-btn").on('click', function () {
 
     let userNameLogin = $("body").find("#user-login").val();
@@ -46,6 +39,9 @@ $("#login-btn").on('click', function () {
             window.location.replace('../..'); //index
             //console.log(data);//good
             saveToLocalStorage(data);
+
+            //change button to logout
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus);
@@ -64,7 +60,7 @@ $("#login-btn").on('click', function () {
 });
 
 
-
+//match
 let $matchContainer = $('.match');
 
 let getMatchFromDatabase = function (match_id) {
@@ -90,3 +86,25 @@ $matchContainer.on('click', '.match-team-name, .match-icon-flag', function () {
         })
         .catch((err) => { throw err; })
 });
+
+
+//chat
+let charArray = []; //arr of obj chat
+let flag;
+$('.chat-container').on('#btn-chat', function () {
+    creatPost();
+    renderPost();
+})
+/*<div class="container darker">
+                <p>Hello. How are you today?</p>
+                <span class="time-right">11:00</span>
+            </div>
+*/
+
+let creatPost = function () {
+    let post = {
+        matchid: "",
+        username: "",
+        text: ""
+    }
+}
