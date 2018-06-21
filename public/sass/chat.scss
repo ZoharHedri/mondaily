@@ -1,0 +1,23 @@
+//the post chat
+.darker{
+    background-color: darkgrey;
+    border: 3px solid black;
+    // border-bottom: none;
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+
+    // &:last-of-type{
+    //     border-bottom: 3px solid black;
+    // }
+}
+
+.chat-user{
+    color: gold;
+}
+
+//post btn
+.panel-footer{
+    margin-top: 5px;
+}
+

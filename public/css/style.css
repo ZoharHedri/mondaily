@@ -87,3 +87,16 @@
     grid-area: b; }
     .matches-root .today-match .match .match-warp .match-date {
       background: #EA3546; }
+
+.darker {
+  background-color: darkgrey;
+  border: 3px solid black;
+  padding: 10px;
+  margin: 5px;
+  box-sizing: border-box; }
+
+.chat-user {
+  color: gold; }
+
+.panel-footer {
+  margin-top: 5px; }
