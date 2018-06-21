@@ -12,6 +12,8 @@ Router.get('/login', (req, res) => {
 
 });
 
+
+
 Router.get('/register', (req, res) => {
     res.render('users/register');
 });
@@ -49,10 +51,13 @@ Router.post('/login', (req, res) => {
 
     User.findOne({ user_name: userlog, password: passwordlog }, { _id: 1, user_name: 1, country: 1 }, (err, data) => {
         if (err) {
-            return console.error(err);
+            return console.error(err);//error from DB
         }
         console.log(data);//good //data = { _id: 5b292ee72ad0582d00717cfb, user_name: amitay,country: 'Brasil' }
         //res.send("find user");
+        if (data == null) {
+            return console.error("user_name Or password wrong");
+        }
         res.json(data);//send the found data in json
     });
 

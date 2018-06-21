@@ -10,7 +10,7 @@
 //     });
 // }, 1000 * 60 * 1 * 1);nam
 
-$("#singlebutton").on('click', function () {
+$("#Regbutton").on('click', function () {
 
     let userName = $("body").find("#textinput").val();
     let usereEmail = $("body").find("#email").val();
@@ -46,7 +46,11 @@ $("#login-btn").on('click', function () {
             window.location.replace('../..'); //index
             //console.log(data);//good
             saveToLocalStorage(data);
-
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
+            $("body").find("#user-login").val("");
+            $("body").find("#password-login").val("");
         }
     });
 

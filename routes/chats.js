@@ -2,7 +2,7 @@ const express = require('express');
 const Router = express.Router();
 const User = require('../model/userModel');
 
-Router.get('/', (req, res) => {
+Router.post('/', (req, res) => {
 
 });
 
