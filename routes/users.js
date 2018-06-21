@@ -25,17 +25,17 @@ Router.post('/register', (req, res) => {
 
     //save to DB
 
-    // User.create({ //good
-    //     user_name: req.body.userName,
-    //     user_email: req.body.usereEmail,
-    //     password: req.body.userPasswor,
-    //     country: req.body.userCountry
-    // }, function (err, data) {
-    //     if (err) {
-    //         return console.error(err);
-    //     }
-    //     console.log(data);
-    // });
+    User.create({ //good
+        user_name: req.body.userName,
+        user_email: req.body.usereEmail,
+        password: req.body.userPasswor,
+        country: req.body.userCountry
+    }, function (err, data) {
+        if (err) {
+            return console.error(err);
+        }
+        console.log(data);
+    });
 
     //views
     res.send('user saved');//check why not working
