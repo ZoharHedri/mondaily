@@ -26,9 +26,14 @@ Router.post('/add/:userId', (req, res) => {
 Router.get('/displayReviews/:matchId', (req, res) => {
     let _matchId = req.params.matchId;
 
-    Review.find({ matchid: _matchId })
-        .then((matchReviews) => {
-            Match.find({ matchid: _matchId })
+    // Review.find({ fifa_id: _matchId })
+    //     .then((matchReviews) => {
+    //         Match.find({ matchid: _matchId })
+    // })
+
+    Match.findOne({ fifa_id: _matchId })
+        .then((match) => {
+            res.render('reviews', { match: match })
         })
 })
 
@@ -41,13 +46,13 @@ Router.get('/displayReviews/:matchId', (req, res) => {
     }) */
 
 Router.get('/', (req, res) => {
+
     Review.find({ matchId: '200' })
         .then((reviews) => {
             console.log(reviews);
             res.render('reviews', { reviews: reviews });
         })
         .catch((err) => { throw err; })
-
 });
 
 module.exports = Router;

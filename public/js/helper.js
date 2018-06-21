@@ -1,3 +1,5 @@
+const Handlebars = require('handlebars');
+
 var groupeNames = {
     '793': 'GROUP A',
     '794': 'GROUP B',
@@ -69,10 +71,44 @@ module.exports = {
         let year = newDate.getFullYear();
         return dayName + ', ' + MonthName + ' ' + DayOfMonth + ' ' + year;
     },
-    checkTime: function (time, score) {
-        if (time === 'FT') {
-            return score;
+    checkTime: function (status, time, datetime, homeScore, awayScore) {
+        if (status === 'in progress') {
+            return time + ' ' + homeScore + ' - ' + awayScore;
         }
-        return time;
+        if (status === 'completed') {
+            return homeScore + ' - ' + awayScore;
+        }
+
+        if (status === 'future') {
+            let date = new Date(datetime);
+            return (date.getUTCHours() + 3) + ':' + date.getUTCMinutes() + '0';
+        }
+    },
+    checkEvent: function (typeOfEvent, player, time) {
+        if (typeOfEvent === 'substitution-in' || typeOfEvent === 'substitution-out') {
+            return "";
+
+        }
+        else {
+            let image = "";
+            if (typeOfEvent === 'yellow-card') {
+                image = '<img src="https://hbsipbc.deltatre.net/overlayassets/imgml/events/yellowcard.png" alt="">'
+            }
+            if (typeOfEvent === 'red-card') {
+                image = '<img src="https://hbsipbc.deltatre.net/overlayassets/imgml/events/redcard.png" alt="">'
+            }
+            if (typeOfEvent === 'goal') {
+                image = '<img src="https://hbsipbc.deltatre.net/overlayassets/imgml/events/goal.png" alt="">'
+            }
+
+            if (typeOfEvent === 'goal-penalty') {
+                image = '<img src="https://hbsipbc.deltatre.net/overlayassets/imgml/events/penalty.png" alt="">'
+            }
+
+
+            let res = `<div class="event">${time} ${image} ${player}</div>`;
+            return new Handlebars.SafeString(res);
+
+        }
     }
 }

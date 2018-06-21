@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
+const handlebars = require('handlebars');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static('node_modules'));
 //express handlebars middleware
 app.engine('handlebars', exphbs({
     defaultLayout: 'main',
+    handlebars: handlebars,
     helpers: require('./public/js/helper.js')
 }));
 app.set('view engine', 'handlebars');
