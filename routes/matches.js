@@ -101,4 +101,19 @@ Router.get('/match/:fifa_id', (req, res) => {
 });
 
 
+let getMatchForCountry = function (fifaCode) {
+    return fetch(`https://worldcup.sfg.io/matches/country?fifa_code=${fifaCode}`)
+        .then((res) => res.json());
+}
+
+Router.get('/match/country/:fifaCode', (req, res) => {
+    getMatchForCountry(req.params.fifaCode)
+        .then((matches) => {
+            res.json(matches);
+        })
+});
+
+
+
+
 module.exports = Router;

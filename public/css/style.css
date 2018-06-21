@@ -1,3 +1,6 @@
+.hide {
+  display: none; }
+
 .hero-image {
   /* The image used */
   background: rgba(0, 0, 0, 0.5) url("https://api.fifa.com/api/v1/picture/tournaments-sq-6/254645_w") no-repeat;
@@ -34,12 +37,18 @@
       width: 66px; }
     .standing-warper .standing-content .standing-team-name {
       font-size: 20px;
-      margin-left: 15px; }
+      margin-left: 15px;
+      color: #01BAEF; }
+      .standing-warper .standing-content .standing-team-name:hover {
+        text-decoration: underline; }
     .standing-warper .standing-content tr {
       background-color: #e9ecef; }
       .standing-warper .standing-content tr:hover {
         background-color: rgba(0, 0, 0, 0.1);
         cursor: pointer; }
+
+.stand-match-row :hover {
+  cursor: default; }
 
 .matches-root {
   display: grid;
@@ -53,6 +62,51 @@
       font-style: italic; }
     .matches-root .match .match-warp .row {
       border-bottom: 5px solid rgba(0, 0, 0, 0.1); }
+      .matches-root .match .match-warp .row .match-stat {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        float: right; }
+        .matches-root .match .match-warp .row .match-stat::before {
+          content: "";
+          width: 30px;
+          height: 30px;
+          display: block;
+          border: 3px solid transparent;
+          border-radius: 50%;
+          border-top: 3px solid #00A8E8;
+          border-bottom: 3px solid #EA3546;
+          animation: spinner .8s ease-in-out infinite; }
+        .matches-root .match .match-warp .row .match-stat::after {
+          content: "live";
+          display: inline;
+          position: absolute;
+          top: 3px;
+          left: 6px;
+          font-size: smaller; }
+      .matches-root .match .match-warp .row .match-statistc {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        float: right; }
+        .matches-root .match .match-warp .row .match-statistc:hover {
+          cursor: pointer;
+          color: blueviolet; }
+        .matches-root .match .match-warp .row .match-statistc::before {
+          content: "";
+          width: 30px;
+          height: 30px;
+          display: block;
+          border: 3px solid transparent;
+          border-radius: 50%;
+          border-bottom: 3px solid #00A8E8; }
+        .matches-root .match .match-warp .row .match-statistc::after {
+          content: "stat";
+          display: inline-block;
+          position: absolute;
+          top: 3px;
+          left: 6px;
+          font-size: smaller; }
       .matches-root .match .match-warp .row:hover {
         background: #00171F;
         color: white; }
@@ -87,3 +141,16 @@
     grid-area: b; }
     .matches-root .today-match .match .match-warp .match-date {
       background: #EA3546; }
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg); } }
+
+.container .tournament-bckg {
+  height: 100%;
+  background-color: #CC2936;
+  display: flex; }
+  .container .tournament-bckg .left-bracket {
+    flex: 1; }
+  .container .tournament-bckg .right-bracket {
+    flex: 1; }

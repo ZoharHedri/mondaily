@@ -13,12 +13,71 @@
             }
             .row{
                 border-bottom: 5px solid rgba(0, 0, 0, .1);
+
+                .match-stat{
+                    position: relative;
+                    width: 30px;
+                    height: 30px;
+                    float: right;
+                    &::before{
+                        content: "";
+                        width: 30px;
+                        height: 30px;
+                        display: block;
+                        border: 3px solid transparent;
+                        border-radius: 50%;
+                        border-top: 3px solid #00A8E8;
+                        border-bottom: 3px solid #EA3546;
+                        animation: spinner .8s ease-in-out infinite;
+                    }
+                    &::after{
+                        content: "live";
+                        display: inline;
+                        position: absolute;
+                        top: 3px;
+                        left: 6px;
+                        font-size: smaller;
+                    }
+                }
+
+                .match-statistc{
+                    position: relative;
+                    width: 30px;
+                    height: 30px;
+                    float: right;
+                    &:hover{
+                        cursor: pointer;
+                        color: blueviolet;
+                    }
+                    &::before{
+                        content: "";
+                        width: 30px;
+                        height: 30px;
+                        display: block;
+                        border: 3px solid transparent;
+                        border-radius: 50%;
+                        border-bottom: 3px solid #00A8E8;
+                    }
+                    &::after{
+                        content: "stat";
+                        display: inline-block;
+                        position: absolute;
+                        top: 3px;
+                        left: 6px;
+                        font-size: smaller;
+
+                        
+                    }
+                    
+                }
+
                 &:hover{
                     background: #00171F;
                     color:white;
                     
                     .match-team-name{
                         cursor: pointer;
+                        
                     }
                     .match-icon-flag{
                         cursor: pointer;
@@ -72,5 +131,11 @@
                 }
             }
         }
+    }
+}
+
+@keyframes spinner{
+    to{
+        transform: rotate(360deg);
     }
 }

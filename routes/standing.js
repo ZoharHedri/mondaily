@@ -5,31 +5,7 @@ const Standing = require('../model/standingModel');
 // 'key=kcmtap0Gn7LZGMpW&secret=5rTFYHfPq3f6mVpH8MaibbZziKyZxYWD'
 
 let getStandingFromApi = function () {
-    let group_a = fetch('http://livescore-api.com/api-client/leagues/table.json?key=aJhG61h0KLk0Ty2G&secret=vtihJ4Metz2v8X3jGkZNlgN6177VGaCb&league=793').then((result) => result.json());
-    let group_b = fetch('http://livescore-api.com/api-client/leagues/table.json?key=aJhG61h0KLk0Ty2G&secret=vtihJ4Metz2v8X3jGkZNlgN6177VGaCb&league=794').then((result) => result.json());;
-    let group_c = fetch('http://livescore-api.com/api-client/leagues/table.json?key=aJhG61h0KLk0Ty2G&secret=vtihJ4Metz2v8X3jGkZNlgN6177VGaCb&league=795').then((result) => result.json());;
-    let group_d = fetch('http://livescore-api.com/api-client/leagues/table.json?key=aJhG61h0KLk0Ty2G&secret=vtihJ4Metz2v8X3jGkZNlgN6177VGaCb&league=796').then((result) => result.json());;
-    let group_e = fetch('http://livescore-api.com/api-client/leagues/table.json?key=aJhG61h0KLk0Ty2G&secret=vtihJ4Metz2v8X3jGkZNlgN6177VGaCb&league=797').then((result) => result.json());;
-    let group_f = fetch('http://livescore-api.com/api-client/leagues/table.json?key=aJhG61h0KLk0Ty2G&secret=vtihJ4Metz2v8X3jGkZNlgN6177VGaCb&league=798').then((result) => result.json());;
-    let group_g = fetch('http://livescore-api.com/api-client/leagues/table.json?key=aJhG61h0KLk0Ty2G&secret=vtihJ4Metz2v8X3jGkZNlgN6177VGaCb&league=799').then((result) => result.json());;
-    let group_h = fetch('http://livescore-api.com/api-client/leagues/table.json?key=aJhG61h0KLk0Ty2G&secret=vtihJ4Metz2v8X3jGkZNlgN6177VGaCb&league=800').then((result) => result.json());;
-
-
-    let standing = [];
-    return Promise.all([group_a, group_b, group_c, group_d, group_e, group_f, group_g, group_h])
-        .then((values) => {
-            values.forEach(element => {
-                let teams = [];
-                teams.push(...element.data.table);
-                let group = {
-                    league_id: element.data.table[0].league_id,
-                    teams: teams
-                }
-                standing.push(group);
-            });
-            return standing;
-            // res.render('standing/standing', { tables: standing });
-        }).catch((err) => { throw err });
+    return fetch('http://worldcup.sfg.io/teams/results').then((res) => res.json());
 }
 
 let saveStandingToDatabase = function (dataFromApi) {
@@ -47,8 +23,8 @@ let getStandingFromDatabase = function () {
 
 let updateStandingToDatabase = function (data) {
     let updates = [];
-    data.forEach(group => {
-        let promise = Standing.update({ league_id: group.league_id }, { $set: { teams: group.teams } });
+    data.forEach(teamStand => {
+        let promise = Standing.update({ id: teamStand.id }, teamStand);
         updates.push(promise);
     });
     return Promise.all(updates)
@@ -59,9 +35,44 @@ let updateStandingToDatabase = function (data) {
         .catch((err) => { throw err; });
 }
 
+
+let mapStandingByGroupLetter = function (data) {
+    let standing = [];
+    data.forEach(element => {
+        let found = standing.find((standTeam) => standTeam.group_letter === element.group_letter);
+        if (found) {
+            found.teams.push(element);
+        } else {
+            let teams = [element];
+            let group = {
+                group_letter: element.group_letter,
+                teams: teams
+            }
+            standing.push(group);
+        }
+    });
+    return standing;
+}
+
+let sortByGroupLetter = function (a, b) {
+    return a.group_letter > b.group_letter;
+}
+
+let sortByPoints = function (element) {
+    element.teams.sort((a, b) => b.points - a.points || b.goal_differential - a.goal_differential || b.goals_for - a.goals_for || b.goals_against - a.goals_against);
+    for (let i = 0; i < element.teams.length; i++) {
+        element.teams[i].rank = i + 1;
+    }
+}
 Router.get('/', (req, res) => {
-    getStandingFromDatabase().then((data) => res.render('standing/standing', { tables: data, title: 'World Cup Standing' }));
+    getStandingFromDatabase().then((data) => {
+        let tables = mapStandingByGroupLetter(data).sort(sortByGroupLetter);
+        tables.forEach(sortByPoints);
+        res.render('standing/standing', { tables: tables, title: 'World Cup Standing' })
+    });
 });
+
+
 
 let updateStanding = () => {
     getStandingFromApi().then((data) => {
@@ -69,6 +80,6 @@ let updateStanding = () => {
     });
 }
 
-setInterval(updateStanding, 1000 * 60 * 60 * 1);
+setInterval(updateStanding, 1000 * 60 * 1 * 10);
 
 module.exports = Router;
