@@ -1,0 +1,102 @@
+.post-review-btn{
+    position: relative;
+    .review-box{
+        position:absolute;
+        left:50%;
+        transform: translateX(-50%);
+        // padding: 28px 25px;
+       display: inline-block;
+       
+        // margin: -20px 34px;
+        // border-width: 5px;
+        .btn{
+            // margin-bottom: 30px;
+        }
+    }
+}
+.post-review{
+    .review-text{
+        width: 100%;
+    }
+}
+.post-review{
+    .modal-body{
+        padding: 0px;
+        .review-text{
+            border: none;
+            height: 200px;
+        }
+    }
+}
+.container-match-1{
+    width: 100%;
+    // margin-left: 680px;
+    text-align: center;
+    .container{
+        width: 100%;
+
+    }
+   .event{
+        width:100%;
+    }
+    
+    .row.match{
+        height: 30px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 30px;
+        color:white;  
+        text-shadow:0 3px 5px rgba(0, 0, 0, 0.5);
+        font-size: 20px;
+        .home-team{
+            height: 100%;
+            background-color: #06b500;
+            border-top-left-radius: 30px;
+            img{
+                position: absolute;
+                top: 6px;
+                right: 2px;
+            }
+            span{
+                margin-right: 24px;
+            }
+        }
+        .score{
+            border: solid grey 1px;
+            height: 100%;
+            background-color: white;
+            color:black;            
+        }
+        .away-team{
+            height: 100%;
+            background-color: #f93737;;
+            border-top-right-radius: 30px;
+            position: relative;
+            img{
+                position: absolute;
+                top:6px;
+                left:6px;
+            }
+            span{
+                margin-left: 34px;
+            }
+        }
+    }
+}
+.post-container{
+    display: inline-block;
+    width:400px;
+}
+
+.header-post{
+    display: inline-block;
+}
+
+.head-post{
+    height: 100%;
+    width: 100%;
+}
+
+.content-post{
+    margin-top:15px;
+}

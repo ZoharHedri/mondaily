@@ -41,6 +41,79 @@
         background-color: rgba(0, 0, 0, 0.1);
         cursor: pointer; }
 
+.post-review-btn {
+  position: relative; }
+  .post-review-btn .review-box {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block; }
+
+.post-review .review-text {
+  width: 100%; }
+
+.post-review .modal-body {
+  padding: 0px; }
+  .post-review .modal-body .review-text {
+    border: none;
+    height: 200px; }
+
+.container-match-1 {
+  width: 100%;
+  text-align: center; }
+  .container-match-1 .container {
+    width: 100%; }
+  .container-match-1 .event {
+    width: 100%; }
+  .container-match-1 .row.match {
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    color: white;
+    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+    font-size: 20px; }
+    .container-match-1 .row.match .home-team {
+      height: 100%;
+      background-color: #06b500;
+      border-top-left-radius: 30px; }
+      .container-match-1 .row.match .home-team img {
+        position: absolute;
+        top: 6px;
+        right: 2px; }
+      .container-match-1 .row.match .home-team span {
+        margin-right: 24px; }
+    .container-match-1 .row.match .score {
+      border: solid grey 1px;
+      height: 100%;
+      background-color: white;
+      color: black; }
+    .container-match-1 .row.match .away-team {
+      height: 100%;
+      background-color: #f93737;
+      border-top-right-radius: 30px;
+      position: relative; }
+      .container-match-1 .row.match .away-team img {
+        position: absolute;
+        top: 6px;
+        left: 6px; }
+      .container-match-1 .row.match .away-team span {
+        margin-left: 34px; }
+
+.post-container {
+  display: inline-block;
+  width: 400px; }
+
+.header-post {
+  display: inline-block; }
+
+.head-post {
+  height: 100%;
+  width: 100%; }
+
+.content-post {
+  margin-top: 15px; }
+
 .matches-root {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));

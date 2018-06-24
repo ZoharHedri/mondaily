@@ -1,6 +1,41 @@
 
 //http://worldcup.sfg.io
 
+$('.save-post').on('click', function () {
+    let user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+        alert('you are not connected');
+        return;
+    }
+    let reviewText = $('.review-text').val();
+    let matchId = JSON.parse(localStorage.getItem('match')).fifa_id;
+    let userId = user.id;
+
+    ajaxPostReview({ userId: userId, reviewText: reviewText, matchId: matchId });
+})
+
+ajaxPostReview = (postReviewObject) => {
+
+    $.ajax({
+        type: 'POST',
+        url: '/reviews/add/',
+        data: postReviewObject,
+    })
+        .then(() => {
+
+        })
+
+}
+
+// $.ajax({
+//     method: 'GET',
+//     url: '/reviews/match/getMatch',
+//     dataType: 'json'
+// })
+//     .then((match) => {
+//         localStorage.setItem('match', JSON.stringify(match));
+//     })
+
 
 //register
 $("#Regbutton").on('click', function () {
@@ -82,7 +117,7 @@ $matchContainer.on('click', '.match-team-name, .match-icon-flag', function () {
     getMatchFromDatabase(match_id)
         .then((match) => {
             localStorage.setItem('match', JSON.stringify(match));
-            window.location.href = '/reviews/displayReviwes/' + match.fifa_id;
+            window.location.href = '/reviews/displayReviews/' + match.fifa_id;
         })
         .catch((err) => { throw err; })
 });
@@ -164,4 +199,33 @@ let renderPost = function () {
                 <span class="time-right">11:00</span>
             </div>
 */
+
+let creatPost1 = function () {
+    let post = {
+        matchid: "",
+        username: "",
+        text: ""
+    }
+}
+
+let renderReviews = function () {
+    let matchId = JSON.parse(localStorage.getItem('match')).fifa_id;
+    if (/displayReviews/g.test(window.location.href)) {
+
+        $.ajax({
+            method: 'GET',
+            url: '/reviews/match/' + matchId
+        })
+            .then((reviews) => {
+                let res = "";
+                $('.review-container').empty();
+                reviews.forEach(element => {
+                    res += `<div>${element.userId.user_name} - ${element.reviewText}</div>`
+                });
+                $('.review-container').append(res);
+            })
+    }
+}
+
+//setInterval(renderReviews, 1000 * 10);
 };
