@@ -12,7 +12,7 @@ Router.post('/addChat', (req, res) => {
 
     Chat.create({
         // match_id: req.body.matchid,
-        match_id: 1,
+        match_id: req.body.matchid,
         user_name: req.body.username,
         text: req.body.text
     }, function (err, data) {

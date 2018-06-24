@@ -1,6 +1,41 @@
 
 //http://worldcup.sfg.io
 
+$('.save-post').on('click', function () {
+    let user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+        alert('you are not connected');
+        return;
+    }
+    let reviewText = $('.review-text').val();
+    let matchId = JSON.parse(localStorage.getItem('match')).fifa_id;
+    let userId = user.id;
+
+    ajaxPostReview({ userId: userId, reviewText: reviewText, matchId: matchId });
+})
+
+ajaxPostReview = (postReviewObject) => {
+
+    $.ajax({
+        type: 'POST',
+        url: '/reviews/add/',
+        data: postReviewObject,
+    })
+        .then((review) => {
+            window.location.reload();
+        })
+
+}
+
+// $.ajax({
+//     method: 'GET',
+//     url: '/reviews/match/getMatch',
+//     dataType: 'json'
+// })
+//     .then((match) => {
+//         localStorage.setItem('match', JSON.stringify(match));
+//     })
+
 
 //register
 $("#Regbutton").on('click', function () {
@@ -82,7 +117,7 @@ $matchContainer.on('click', '.match-team-name, .match-icon-flag', function () {
     getMatchFromDatabase(match_id)
         .then((match) => {
             localStorage.setItem('match', JSON.stringify(match));
-            window.location.href = '/reviews/displayReviwes/' + match.fifa_id;
+            window.location.href = '/reviews/displayReviews/' + match.fifa_id;
         })
         .catch((err) => { throw err; })
 });
@@ -277,9 +312,11 @@ let creatPost = function (textChat) {
 
     console.log(matchChat);
 
+
+
     let post = {
-        matchid: '1122334455',//matchChat.fifa_id,
-        username: userChat.name,
+        matchid: matchChat.fifa_id,
+        username: userChat.name || 'Anonymous',
         text: textChat
     }
 
@@ -288,7 +325,7 @@ let creatPost = function (textChat) {
 
     $.ajax({
         type: "POST",
-        url: 'chats/addChat',
+        url: '/chats/addChat',
         data: post,
         success: function (data) {
             console.log(data);//good
@@ -305,7 +342,7 @@ setInterval(function () {
         let match = JSON.parse(localStorage.getItem('match'));
         $.ajax({
             method: 'GET',
-            url: '/chats/getChat/' + 1 //match.fifa_id
+            url: '/chats/getChat/' + match.fifa_id //match.fifa_id
         }).then((chats) => {
             $('.chat-container').empty();
             let res = "";
@@ -319,6 +356,7 @@ setInterval(function () {
         </div>`
             });
             $('.chat-container').append(res);
+            $('.main-chat').scrollTop($('.main-chat').prop('scrollHeight'));
         })
         //ajax => get all chat of this mach
         //renderPost 
@@ -334,4 +372,70 @@ let renderPost = function () {
                 <span class="time-right">11:00</span>
             </div>
 */
-};
+}
+
+let renderReviews = function () {
+    let matchId = JSON.parse(localStorage.getItem('match')).fifa_id;
+    if (/displayReviews/g.test(window.location.href)) {
+
+        $.ajax({
+            method: 'GET',
+            url: '/reviews/match/' + matchId
+        })
+            .then((reviews) => {
+                let res = "";
+                $('.review-container').empty();
+                reviews.forEach(element => {
+                    res += `<div>${element.userId.user_name} - ${element.reviewText}</div>`
+                });
+                $('.review-container').append(res);
+            })
+    }
+}
+
+//setInterval(renderReviews, 1000 * 10);
+
+//post js
+$('.post__comment').on('keyup', function (event) {
+    if (event.keyCode == 13) {
+        $(this).closest('div').css('z-index', '-10');
+        let $postComment = $(this).val();
+        let $postId = $(this).closest('.post').data().id;
+        let userId = JSON.parse(localStorage.getItem('user')).id;
+        let $commentWarp = $(this).closest('.post').find('post__body__comments');
+        if ($postComment === " ") {
+            return;
+        }
+        $.ajax({
+            method: 'POST',
+            url: '/reviews/comments/add',
+            data: { postId: $postId, postComment: $postComment, userId: userId }
+        }).then((lastComment) => {
+            console.log(lastComment);
+            // window.location.reload();
+        });
+
+        $(this).val('');
+    }
+});
+
+$('input[type="checkbox"]').change(function () {
+    if (this.checked) {
+        $(this).next().next().css('z-index', '10');
+        this.checked = false;
+    }
+})
+
+$('.post__header__icon_warp__menu__item').click(function () {
+    $(this).closest('ul').css('z-index', '-10');
+})
+
+$('.deletePost').click(function () {
+    let postId = $(this).closest('.post').data().id;
+    $.ajax({
+        method: 'DELETE',
+        url: '/reviews/delete/' + postId
+    }).then(() => {
+        window.location.reload();
+    })
+});

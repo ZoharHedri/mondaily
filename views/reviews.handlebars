@@ -1,0 +1,91 @@
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="main-chat">
+                <legend class="chat">Chat Messages</legend>
+                <div class="chat-container"></div>
+
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="input-chat" type="text" class="form-control" placeholder="Your message..." />
+                        <span class="input-group-btn">
+                            <button id="btn-chat" type="button" class="btn btn-warning">Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="container-match-1">
+                <div class="container">
+                    <div class="row match">
+                        <div class="col-md-4 home-team">
+                            <span>{{match.home_team.country}}</span>
+                            <img height="20px" src="{{getFifaIcon match.home_team.country}}" alt="">
+                        </div>
+                        <div class="col-md-4 score">{{match.home_team.goals}} - {{match.away_team.goals}}</div>
+                        <div class="col-md-4 away-team">
+                            <img height="20px" src="{{getFifaIcon match.away_team.country}}" alt="">
+                            <span>{{match.away_team.country}}</span>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{#each match.home_team_events}} {{checkEvent type_of_event player time}} {{/each}}
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            {{#each match.away_team_events}} {{checkEvent type_of_event player time}} {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="post-review-btn">
+                <div class="review-box">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-bullhorn"></i> Post your review!
+                    </button>
+                    {{!-- {{> _postTemplate}} --}}
+                </div>
+                <!-- Button trigger modal -->
+                <!-- Modal -->
+                <div class="modal fade post-review" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Your review</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="review-text-container">
+                                    <textarea class="review-text"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary save-post" data-dismiss="modal">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="review-container">
+                {{> _postTemplate}}
+            </div>
+        </div>
+    </div>
+</div>

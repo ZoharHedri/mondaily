@@ -82,15 +82,7 @@ module.exports = {
 
         if (status === 'future') {
             let date = new Date(datetime);
-            let date2 = new Date(datetime);
-            date2.setHours(0, 0, 0, 0);
-            let now = new Date();
-            now.setHours(0, 0, 0, 0);
-            if (date2 - now === 0) {
-                return date.getUTCHours() + ':' + date.getUTCMinutes() + '0';
-            } else {
-                return (date.getUTCHours() + 3) + ':' + date.getUTCMinutes() + '0';
-            }
+            return (date.getUTCHours() + 3) + ':' + date.getUTCMinutes() + '0';
         }
     },
     ifEqual: function (status) {
@@ -103,6 +95,33 @@ module.exports = {
         if (status === 'completed') {
             let res = `<span class="match-statistc"></span>`;
             return new Handlebars.SafeString(res);
+        }
+    },
+    checkEvent: function (typeOfEvent, player, time) {
+        if (typeOfEvent === 'substitution-in' || typeOfEvent === 'substitution-out') {
+            return "";
+
+        }
+        else {
+            let image = "";
+            if (typeOfEvent === 'yellow-card') {
+                image = '<img src="https://hbsipbc.deltatre.net/overlayassets/imgml/events/yellowcard.png" alt="">'
+            }
+            if (typeOfEvent === 'red-card') {
+                image = '<img src="https://hbsipbc.deltatre.net/overlayassets/imgml/events/redcard.png" alt="">'
+            }
+            if (typeOfEvent === 'goal') {
+                image = '<img src="https://hbsipbc.deltatre.net/overlayassets/imgml/events/goal.png" alt="">'
+            }
+
+            if (typeOfEvent === 'goal-penalty') {
+                image = '<img src="https://hbsipbc.deltatre.net/overlayassets/imgml/events/penalty.png" alt="">'
+            }
+
+
+            let res = `<div class="event">${time} ${image} ${player}</div>`;
+            return new Handlebars.SafeString(res);
+
         }
     }
 }
