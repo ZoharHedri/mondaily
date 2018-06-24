@@ -100,3 +100,217 @@
 .content-post{
     margin-top:15px;
 }
+
+
+// Acutal post layout
+$white_color : #fff;
+$black_color : #000;
+$greay_1_color : #DBDBDB;
+$heading_text_color_grey:#707070;
+$padding_content: 10px;
+$font_size_header_profile:24px;
+$font_size_body_text:20px;
+
+
+
+
+.post{
+    // height: 400px;
+    width: 600px;
+    margin-bottom: 20px;
+    &__header{
+       width: 100%;
+       display: flex;
+       padding: $padding_content;
+        &__img_warp{
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            border:none;
+            // @include img-center;
+            &__img{
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+        }
+        &__profile_warp{
+            margin-left: 10px;
+            font-family: 'Nunito', sans-serif;
+            color: $heading_text_color_grey;
+            &__username{
+                margin: 0;
+                font-weight: 700;
+                font-size: $font_size_header_profile;
+            }
+            &__posted_at{
+                margin-top: 3px;
+                font-size: 18px;
+            }
+        }
+        &__icon_warp{
+            margin-left:auto; 
+            color: $heading_text_color_grey;
+            position: relative;
+
+            &__icon{
+                &:hover{
+                    cursor: pointer;
+                    color: rgba($color: #000000, $alpha: .2);
+                }
+            }
+
+            &__checkbox{
+                display: none;
+            }
+
+
+
+            &__menu{
+                position: absolute;
+                top: -5px;
+                left: -72px;
+                list-style: none;
+                background-color: $white_color;
+                font-family: 'Nunito', sans-serif;
+                color: rgba($color: $black_color, $alpha: .2);
+                border: 1px solid rgba($color: $heading_text_color_grey, $alpha: .2);
+                padding:5px;
+                width: 100px;
+
+                z-index: -100; 
+               &__item{
+                    &:first-child{
+                        text-align: right;
+                    }
+
+                   &:hover{
+                       color: $black_color;
+                       cursor: pointer;
+                   }
+               }
+            }
+        }
+       
+    }
+
+    &__body{
+        width: 100%;
+        padding: $padding_content;
+        font-family: 'Raleway', sans-serif;
+
+        &__text_warp{
+            color: $heading_text_color_grey;
+            font-size: $font_size_body_text;
+        }
+
+        &__comments_warp{
+            
+            
+            &__icon{
+                position: relative;
+
+                &:hover i:hover{
+                    color:red;   
+                    cursor: pointer;
+                }
+
+                &__checkbox{
+                    display: none;
+                }
+
+                // &__checkbox:checked ~ &__input{
+                //     z-index: 10;
+                // }
+
+                &__checkbox:checked ~ &__input .post__comment {
+                    // z-index: -10;
+                    font-family: 'Raleway', sans-serif;
+                    font-size: 18px;
+                }
+
+                &__content{
+                    text-align: end;
+                   
+                }
+
+                &__input{
+                    position: absolute;
+                    top: 0;
+                    z-index: -10;
+                }
+            }
+        }
+
+
+        
+
+    }
+
+
+
+    // modifier for post
+    &-border-grey{
+        border: 1px solid rgba($heading_text_color_grey, .6);
+    } 
+
+    &-round{
+        border-radius: 3px;
+    }
+    &-red{
+        background-color: red; 
+    }
+
+    &-blue{
+        background-color: blue;
+    }
+
+    &-white{
+        background-color: $white_color; 
+    }
+
+    //elements inside the post
+}
+
+
+.comment{
+    width: 100%;
+    margin-top: 10px; 
+    display: flex;
+
+    &__img_warp{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    &__img{
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+    }
+
+    &__text_warp{
+        margin-left: 10px;
+        border-radius: 3px;
+        background-color: #DBDBDB;
+        flex: 1;
+        padding:10px 0 0 10px;
+    }
+
+    &__username{
+        color: $black_color;
+        font-weight: bold;
+        font-family: 'Nunito', sans-serif;
+        font-size: 18px;
+        margin: 0;
+    }
+
+    &__text{
+        margin-left: 15px;
+        font-family: 'Raleway', sans-serif;
+        font-size: 18px;
+        color: $heading_text_color_grey;
+    }
+
+}

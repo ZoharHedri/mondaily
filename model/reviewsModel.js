@@ -10,7 +10,7 @@ const reviewSchema = new Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
     reviewText: String,
     matchId: String,
-    comment: [commentSchema]
+    comments: [commentSchema]
 })
 
 var Review = mongoose.model('reviews', reviewSchema);

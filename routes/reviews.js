@@ -26,14 +26,12 @@ Router.post('/add/', (req, res) => {
 Router.get('/displayReviews/:matchId', (req, res) => {
     let _matchId = req.params.matchId;
 
-    // Review.find({ fifa_id: _matchId })
-    //     .then((matchReviews) => {
-    //         Match.find({ matchid: _matchId })
-    // })
-
     Match.findOne({ fifa_id: _matchId })
         .then((match) => {
-            res.render('reviews', { match: match })
+            Review.find({ matchId: _matchId }).populate('userId comments.userId').exec()
+                .then((matchReviews) => {
+                    res.render('reviews', { match: match, reviews: matchReviews });
+                })
         })
 })
 
@@ -62,4 +60,26 @@ Router.get('/match/:matchId', (req, res) => {
         })
 })
 
+
+Router.post('/comments/add', (req, res) => {
+    let userId = req.body.userId;
+    let postId = req.body.postId;
+    let postComment = req.body.postComment;
+    Review.findOne({ _id: postId }).then((post) => {
+        post.comments = post.comments.concat({ userId: userId, textComment: postComment });
+
+        post.save().populate('comments.userId').exec()
+            .then((post) => {
+                let lastComment = post.comments.pop();
+                res.send(lastComment);
+            })
+    });
+})
+
+Router.delete('/delete/:postId', (req, res) => {
+    Review.deleteOne({ _id: req.params.postId })
+        .then(() => {
+            res.send({ success: true, msg: 'post has been deleted' });
+        }).catch((err) => { throw err; })
+})
 module.exports = Router;

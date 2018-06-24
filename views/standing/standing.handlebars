@@ -1,9 +1,9 @@
-<div class="container mt-5">
+<div class="standing-container container mt-5">
     <div class="row">
         {{#each tables}}
         <div class="col-md-12">
             <div class="standing-warper">
-                <div class="standing-title">{{getGroupName league_id}}</div>
+                <div class="standing-title">GROUP {{group_letter}}</div>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -26,23 +26,29 @@
                             <td>
                                 {{!--
                                 <img class="standing-team-flag" src="/img/icon set 3/SVG/{{toLowerCase name}}.svg " alt="{{name}} flag icon"> --}}
-                                <img class="standing-team-flag" src="{{getFifaIcon name}} " alt="{{name}} flag icon">
-                                <a class="standing-team-name" href="#">{{name}}</a>
+                                <img data-fifa-code={{fifa_code}} class="standing-team-flag" src="{{getFifaIcon country}} " alt="{{country}} flag icon">
+                                <span data-fifa-code={{fifa_code}} class="standing-team-name" href="#">{{country}}</span>
                             </td>
-                            <td>{{matches}}</td>
-                            <td>{{won}}</td>
-                            <td>{{drawn}}</td>
-                            <td>{{lost}}</td>
-                            <td>{{goals_scored}}</td>
-                            <td>{{goals_conceded}}</td>
-                            <td>{{goal_diff}}</td>
+                            <td>{{games_played}}</td>
+                            <td>{{wins}}</td>
+                            <td>{{draws}}</td>
+                            <td>{{losses}}</td>
+                            <td>{{goals_for}}</td>
+                            <td>{{goals_against}}</td>
+                            <td>{{goal_differential}}</td>
                             <td>{{points}}</td>
                         </tr>
-                        {{/each}} <!--for each -> for all 4  team in 1 group -->
+                        <tr class="stand-match-row">
+                            <td colspan="10" class="hide">
+
+                            </td>
+                        </tr>
+                        {{/each}}
                     </tbody>
                 </table>
             </div>
         </div>
-        {{/each}} <!--for each -> for all 8 groups-->
+        {{/each}}
+        <!--for each -> for all 8 groups-->
     </div>
 </div>

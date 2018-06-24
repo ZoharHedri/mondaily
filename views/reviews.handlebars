@@ -1,7 +1,19 @@
 <div class="container-fluid mt-4">
     <div class="row">
         <div class="col-md-6">
+            <div class="main-chat">
+                <legend class="chat">Chat Messages</legend>
+                <div class="chat-container"></div>
 
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="input-chat" type="text" class="form-control" placeholder="Your message..." />
+                        <span class="input-group-btn">
+                            <button id="btn-chat" type="button" class="btn btn-warning">Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
             <div class="container-match-1">
@@ -33,14 +45,15 @@
 
     </div>
 
-    <div class="row">
+
+    <div class="row mt-5">
         <div class="col-md-12">
             <div class="post-review-btn">
                 <div class="review-box">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         <i class="fa fa-bullhorn"></i> Post your review!
                     </button>
-                    {{> _postTemplate}}
+                    {{!-- {{> _postTemplate}} --}}
                 </div>
                 <!-- Button trigger modal -->
                 <!-- Modal -->
@@ -67,13 +80,12 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="review-container">
-
-                </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="review-container">
+                {{> _postTemplate}}
             </div>
         </div>
     </div>
-
 </div>

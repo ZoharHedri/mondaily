@@ -13,12 +13,69 @@
             }
             .row{
                 border-bottom: 5px solid rgba(0, 0, 0, .1);
+
+                .match-stat{
+                    position: relative;
+                    width: 30px;
+                    height: 30px;
+                    float: right;
+                    &::before{
+                        content: "";
+                        width: 30px;
+                        height: 30px;
+                        display: block;
+                        border: 3px solid transparent;
+                        border-radius: 50%;
+                        border-top: 3px solid #00A8E8;
+                        border-bottom: 3px solid #EA3546;
+                        animation: spinner .8s ease-in-out infinite;
+                    }
+                    &::after{
+                        content: "live";
+                        display: inline;
+                        position: absolute;
+                        top: 3px;
+                        left: 6px;
+                        font-size: smaller;
+                    }
+                }
+
+                .match-statistc{
+                    position: relative;
+                    width: 30px;
+                    height: 30px;
+                    float: right;
+                    &:hover{
+                        cursor: pointer;
+                        color: blueviolet;
+                    }
+                    &::before{
+                        content: "";
+                        width: 30px;
+                        height: 30px;
+                        display: block;
+                        border: 3px solid transparent;
+                        border-radius: 50%;
+                        border-bottom: 3px solid #00A8E8;
+                    }
+                    &::after{
+                        content: "stat";
+                        display: inline-block;
+                        position: absolute;
+                        top: 3px;
+                        left: 6px;
+                        font-size: smaller;
+                    }
+                    
+                }
+
                 &:hover{
                     background: #00171F;
                     color:white;
                     
                     .match-team-name{
                         cursor: pointer;
+                        
                     }
                     .match-icon-flag{
                         cursor: pointer;
@@ -73,4 +130,57 @@
             }
         }
     }
+}
+
+@keyframes spinner{
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.modal-content{
+   
+    #demo-modal{
+        .row{
+            border-bottom:2px solid rgba(0, 0, 0, .2);
+
+            .col-md-4{
+                position: relative;
+            }
+        } 
+    }
+    
+
+    .modal-header{
+        padding: 1rem 0;
+        font-weight: 700;
+        font-family: 'Nunito', sans-serif;
+        font-size: 24px;
+        background-color: #F9F9F9;
+        .container-fluid{
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+    }
+}
+
+.modal-header-state{
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+}
+
+
+
+.team-data-modal{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    text-shadow: 2px 0 5px rgba($color: #000000, $alpha: .5);
+    font-size: 27px;
+    padding: 10px;
 }

@@ -1,0 +1,69 @@
+{{!--
+<div class="post-container">
+    <div class="head-post">
+        <img src="https://cdn.countryflags.com/thumbs/argentina/flag-3d-round-250.png" alt="">
+        <div class="header-post">username nagasa</div>
+    </div>
+    <div class="content-post">Lorem ipsum dolor sit amet consectetur, adipisics</div>
+</div> --}} {{#each reviews}}
+<div data-id={{_id}} class="post post-white post-border-grey post-round">
+    <div class="post__header">
+        <div class="post__header__img_warp ">
+            <img class="post__header__img_warp__img" src="{{getFifaIcon userId.country}} " alt=" ">
+        </div>
+        <div class="post__header__profile_warp ">
+            <p class="post__header__profile_warp__username ">{{userId.user_name}}</p>
+            <p class="post__header__profile_warp__posted_at ">12 min ago</p>
+        </div>
+        <div class="post__header__icon_warp">
+            <input type="checkbox" id="{{_id}}_1" class="post__header__icon_warp__checkbox ">
+            <label for="{{_id}}_1">
+                <i class="post__header__icon_warp__icon fa fa-ellipsis-h fa-2x "></i>
+            </label>
+            <ul class="post__header__icon_warp__menu ">
+                <li class="post__header__icon_warp__menu__item">
+                    <span>&times;</span>
+                </li>
+                <li class="post__header__icon_warp__menu__item deletePost">Delete Post</li>
+            </ul>
+        </div>
+    </div>
+    <div class="post__body ">
+        <div class="post__body__text_warp ">
+            <p class="post__body__text_warp__content ">
+                {{reviewText}}
+            </p>
+        </div>
+        <div class="post__body__comments_warp ">
+            <div class="post__body__comments_warp__icon ">
+                <input type="checkbox" id="{{_id}}_2" class="post__body__comments_warp__icon__checkbox ">
+                <div class="post__body__comments_warp__icon__content ">
+                    <label for="{{_id}}_2">comment
+                        <i class=" fa fa-comments-o fa-2x "></i>
+                    </label>
+                </div>
+                <div class="post__body__comments_warp__icon__input input-group ">
+                    <input type="text " class="post__comment form-control " placeholder="write a comment...
+    " aria-label=" " aria-describedby="basic-addon1 ">
+                    <!-- <div class="input-group-append ">
+                            <a href="# " class="post__body__comments_warp__icon__input__button btn btn-primary " type="button ">Love it</a>
+                        </div> -->
+                </div>
+            </div>
+            <div class="post__body__comments ">
+                {{#each comments}}
+                <div class="comment ">
+                    <div class="comment__img_warp ">
+                        <img class="comment__img " src="{{getFifaIcon userId.country}} " alt=" ">
+                    </div>
+                    <div class="comment__text_warp ">
+                        <p class="comment__username ">{{userId.user_name}}</p>
+                        <p class="comment__text ">{{textComment}}</p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}

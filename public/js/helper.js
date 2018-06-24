@@ -73,7 +73,8 @@ module.exports = {
     },
     checkTime: function (status, time, datetime, homeScore, awayScore) {
         if (status === 'in progress') {
-            return time + ' ' + homeScore + ' - ' + awayScore;
+            let res = time + '<br>' + homeScore + ' - ' + awayScore;
+            return new Handlebars.SafeString(res);
         }
         if (status === 'completed') {
             return homeScore + ' - ' + awayScore;
@@ -82,6 +83,18 @@ module.exports = {
         if (status === 'future') {
             let date = new Date(datetime);
             return (date.getUTCHours() + 3) + ':' + date.getUTCMinutes() + '0';
+        }
+    },
+    ifEqual: function (status) {
+        if (status === 'in progress') {
+            let res = `<span class="match-stat"></span>`;
+            return new Handlebars.SafeString(res);
+        }
+    },
+    ifCompleted: function (status) {
+        if (status === 'completed') {
+            let res = `<span class="match-statistc"></span>`;
+            return new Handlebars.SafeString(res);
         }
     },
     checkEvent: function (typeOfEvent, player, time) {

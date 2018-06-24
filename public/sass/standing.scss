@@ -22,6 +22,10 @@
         .standing-team-name{
             font-size: 20px;
             margin-left: 15px;
+            color: #01BAEF;
+            &:hover{
+                text-decoration: underline;
+            }
         }
 
         tr{
@@ -35,4 +39,10 @@
         }
     }
 
+}
+
+.stand-match-row{
+    :hover{
+        cursor: default;
+    }
 }
