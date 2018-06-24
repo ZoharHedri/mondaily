@@ -3,9 +3,9 @@ const Router = express.Router();
 const Review = require('../model/reviewsModel');
 const Match = require('../model/matchModel');
 
-Router.post('/add/:userId', (req, res) => {
-    _userId = req.params.userId;
-    _reviewText = req.body.text;
+Router.post('/add/', (req, res) => {
+    _userId = req.body.userId;
+    _reviewText = req.body.reviewText;
     _matchId = req.body.matchId;
 
     let newReview = new Review({
@@ -16,7 +16,7 @@ Router.post('/add/:userId', (req, res) => {
 
     newReview.save()
         .then((review) => {
-            res.render('reviews');
+            res.json(review);
         })
         .catch((err) => {
             res.send(err);
@@ -47,12 +47,19 @@ Router.get('/displayReviews/:matchId', (req, res) => {
 
 Router.get('/', (req, res) => {
 
-    Review.find({ matchId: '200' })
+    Review.find({ matchId: '300331526' }).populate('userId').exec()
         .then((reviews) => {
             console.log(reviews);
-            res.render('reviews', { reviews: reviews });
+            res.render('_postTemplate', { reviews: reviews });
         })
         .catch((err) => { throw err; })
 });
+
+Router.get('/match/:matchId', (req, res) => {
+    Review.find({ matchId: req.params.matchId }).populate('userId').exec()
+        .then((reviews) => {
+            res.send(reviews);
+        })
+})
 
 module.exports = Router;
