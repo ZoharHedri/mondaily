@@ -87,17 +87,218 @@
 
 
     <div class="modal fade" id="bootstrap-modal" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">Bootstrap Dynamic Modal Content
-                    </h4>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <span class="home-team-modal"></span>
+                            </div>
+                            <div class="col-md-4 text-center">Overall Stat</div>
+                            <div class="col-md-4">
+                                <div class="text-right">
+                                    <span class="away-team-modal"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="demo-modal"></div>
+                <div id="demo-modal">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-goal-attempts"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Goal Attempt</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-goal-attempts text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-on-target"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">On Target</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-on-target text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-off-target"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Off Target</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-off-target text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-blocked"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Blocked</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-blocked text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-corners"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Corners</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-corners text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-offsides"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Offsides</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-offsides text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-ball-possession"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Ball Possession</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-ball-possession text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-pass-accuracy"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Pass Accuracy</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-pass-accuracy text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-num-passes"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Num Passes</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-num-passes text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-passes-completed"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Passes Completed</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-passes-completed text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-distance-covered"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Distance Covered</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-distance-covered text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-balls-recovered"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Balls Recovered</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-balls-recovered text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-tackles"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Tackles</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-tackles text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-clearances"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Clearances</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-clearances text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-yellow-cards"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Yellow Cards</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-yellow-cards text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-red-cards"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Red Cards</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-red-cards text-right"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 team-data-modal">
+                                <div class="home-team-fouls-committed"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center modal-header-state">Fouls Committed</div>
+                            </div>
+                            <div class="col-md-4 team-data-modal">
+                                <div class="away-team-fouls-committed text-right"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{!--
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

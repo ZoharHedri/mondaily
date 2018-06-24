@@ -82,7 +82,15 @@ module.exports = {
 
         if (status === 'future') {
             let date = new Date(datetime);
-            return (date.getUTCHours() + 3) + ':' + date.getUTCMinutes() + '0';
+            let date2 = new Date(datetime);
+            date2.setHours(0, 0, 0, 0);
+            let now = new Date();
+            now.setHours(0, 0, 0, 0);
+            if (date2 - now === 0) {
+                return date.getUTCHours() + ':' + date.getUTCMinutes() + '0';
+            } else {
+                return (date.getUTCHours() + 3) + ':' + date.getUTCMinutes() + '0';
+            }
         }
     },
     ifEqual: function (status) {

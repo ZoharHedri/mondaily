@@ -146,11 +146,47 @@
   to {
     transform: rotate(360deg); } }
 
-.container .tournament-bckg {
-  height: 100%;
-  background-color: #CC2936;
-  display: flex; }
-  .container .tournament-bckg .left-bracket {
-    flex: 1; }
-  .container .tournament-bckg .right-bracket {
-    flex: 1; }
+.modal-content #demo-modal .row {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2); }
+  .modal-content #demo-modal .row .col-md-4 {
+    position: relative; }
+
+.modal-content .modal-header {
+  padding: 1rem 0;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  font-size: 24px;
+  background-color: #F9F9F9; }
+  .modal-content .modal-header .container-fluid {
+    padding-right: 10px;
+    padding-left: 10px; }
+
+.modal-header-state {
+  font-family: 'Nunito', sans-serif;
+  font-size: 24px;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100%; }
+
+.team-data-modal {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  text-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  font-size: 27px;
+  padding: 10px; }
+
+.darker {
+  background-color: darkgrey;
+  border: 3px solid black;
+  padding: 10px;
+  margin: 5px;
+  box-sizing: border-box; }
+
+.chat-user {
+  color: gold; }
+
+.panel-footer {
+  margin-top: 5px; }
