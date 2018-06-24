@@ -125,18 +125,82 @@ $matchContainer.on('click', '.match-team-name, .match-icon-flag', function () {
 
 //chat
 let charArray = []; //arr of obj chat
-let flag;
-$('.chat-container').on('#btn-chat', function () {
-    creatPost();
-    renderPost();
+let currentId = 0;
+
+$('#btn-chat').on('click', function () {
+    let inpuChat = $("body").find("#input-chat").val();
+    //console.log(inpuChat); good
+
+    creatPost(inpuChat);
+    // renderPost(inpuChat);
+    $("body").find("#input-chat").val("");
 })
-/*<div class="container darker">
+
+
+let creatPost = function (textChat) {
+
+    let matchChat = JSON.parse(localStorage.getItem('match'));
+    let userChat = JSON.parse(localStorage.getItem('user'));
+
+    console.log(matchChat);
+
+    let post = {
+        matchid: '1122334455',//matchChat.fifa_id,
+        username: userChat.name,
+        text: textChat
+    }
+
+    charArray.push(post);
+    console.log(charArray);
+
+    $.ajax({
+        type: "POST",
+        url: 'chats/addChat',
+        data: post,
+        success: function (data) {
+            console.log(data);//good
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
+        }
+    });
+};
+
+
+setInterval(function () {
+    let match = JSON.parse(localStorage.getItem('match'));
+    $.ajax({
+        method: 'GET',
+        url: '/chats/getChat/' + 1 //match.fifa_id
+    }).then((chats) => {
+        $('.chat-container').empty();
+        let res = "";
+        chats.forEach(element => {
+            // let date = new Date();
+            // let currentDate = date.getHours() + ":" + date.getMinutes();
+
+            res += `<div class="container darker">
+            <span class="chat-user">${element.user_name}: </span> 
+            <span class="chat-text">${element.text}</span>
+        </div>`
+        });
+        $('.chat-container').append(res);
+    })
+    //ajax => get all chat of this mach
+    //renderPost 
+}, 1000);
+
+
+
+let renderPost = function () {
+    empty
+    /*<div class="container darker">
                 <p>Hello. How are you today?</p>
                 <span class="time-right">11:00</span>
             </div>
 */
 
-let creatPost = function () {
+let creatPost1 = function () {
     let post = {
         matchid: "",
         username: "",
@@ -164,3 +228,4 @@ let renderReviews = function () {
 }
 
 //setInterval(renderReviews, 1000 * 10);
+};
