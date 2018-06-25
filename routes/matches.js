@@ -54,9 +54,9 @@ let sortByDate = function (match_a, match_b) {
 }
 
 let updateMatchesToDatabase = function () {
-    let todaysMatches = fetch('http://worldcup.sfg.io/matches/today').then((res) => res.json());
+    let all_matches = fetch('https://worldcup.sfg.io/matches').then((res) => res.json());
     let updates = [];
-    todaysMatches.then((matches) => {
+    all_matches.then((matches) => {
         matches.forEach(element => {
             let promise = Match.update({ fifa_id: element.fifa_id }, element);
             updates.push(promise);
@@ -64,15 +64,13 @@ let updateMatchesToDatabase = function () {
 
         Promise.all(updates)
             .then((valuse) => {
-                console.log('today\'s matched have been updated..');
+                console.log('matches have been updated..');
             })
             .catch((err) => { throw err; })
     });
 }
 
 setInterval(updateMatchesToDatabase, 1000 * 60 * 1);
-
-// setInterval(updateMatchesToDatabase, 1000 * 60 * 60 * 1);
 
 let formatDate = function (datetime = new Date()) {
     let today = new Date(datetime);
@@ -88,7 +86,7 @@ Router.get('/', (req, res) => {
             let sortedMatches = mapMatchesByDate(matches).sort(sortByDate);
             let today = formatDate();
             let todayMatches = sortedMatches.find((e) => e.datetime === today);
-            res.render('matches/matches', { sortedMatches: sortedMatches, todayMatches: [todayMatches] });
+            res.render('matches/matches', { title: 'Matches Playes', sortedMatches: sortedMatches, todayMatches: [todayMatches] });
         });
 });
 
