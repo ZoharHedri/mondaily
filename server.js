@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 const handlebars = require('handlebars');
 const app = express();
 
-mongoose.connect('mongodb://root:123456a@ds143388.mlab.com:43388/mondaily-db', () => {
+mongoose.connect(process.env.CONNECTION_STRING, () => {
     console.log('connected to mondaily-db');
 });
 
@@ -46,4 +46,5 @@ app.get('/', (req, res) => {
     res.render('index', data);
 });
 
-app.listen(8000, () => { console.log('server listening on port 8000') });
+const port = process.env.PORT || 8000;
+app.listen(port, () => { console.log('server listening on port', port) });
