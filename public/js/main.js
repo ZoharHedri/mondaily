@@ -423,9 +423,14 @@ $('.post__header__icon_warp__menu__item').click(function () {
 $('.deletePost').click(function () {
     let $post = $(this).closest('.post');
     let $postId = $post.data().id;
-    let userLocal = JSON.parse(localStorage.getItem('user')).name;
+    let userLocal = JSON.parse(localStorage.getItem('user'));
+    if (!userLocal) {
+        alert('you are not connected..');
+        return;
+    }
     let $userPost = $post.find('.post__header__profile_warp__username').text();
-    if (userLocal !== $userPost) {
+    if (userLocal.name !== $userPost) {
+        alert('delete failed. username dosent match!!');
         return;
     }
 
