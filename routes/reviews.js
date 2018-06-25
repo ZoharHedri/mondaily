@@ -30,7 +30,7 @@ Router.get('/displayReviews/:matchId', (req, res) => {
         .then((match) => {
             Review.find({ matchId: _matchId }).populate('userId comments.userId').exec()
                 .then((matchReviews) => {
-                    res.render('reviews', { match: match, reviews: matchReviews });
+                    res.render('reviews', { title: 'Game Review', match: match, reviews: matchReviews });
                 })
         })
 })

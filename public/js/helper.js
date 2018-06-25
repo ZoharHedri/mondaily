@@ -48,6 +48,23 @@ var teamAbbr = {
     'Uruguay': 'uru'
 }
 
+function convertMS(milliseconds) {
+    var day, hour, minute, seconds;
+    seconds = Math.floor(milliseconds / 1000);
+    minute = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+    hour = Math.floor(minute / 60);
+    minute = minute % 60;
+    day = Math.floor(hour / 24);
+    hour = hour % 24;
+    return {
+        day: day,
+        hour: hour,
+        minute: minute,
+        seconds: seconds
+    };
+}
+
 module.exports = {
     getGroupName: function (leauge_id) {
         return groupeNames[leauge_id];
@@ -122,6 +139,17 @@ module.exports = {
             let res = `<div class="event">${time} ${image} ${player}</div>`;
             return new Handlebars.SafeString(res);
 
+        }
+    },
+    myDate: function (date) {
+        var result = new Date() - new Date(date);
+        var format = convertMS(result);
+        if (result < 1000 * 60 * 59) {
+            return format.minute + ' minute ago';
+        } else if (result < 1000 * 60 * 60 * 24) {
+            return format.hour + ' hour ago';
+        } else if (result < 1000 * 60 * 60 * 24 * 30) {
+            return format.day + ' days ago';
         }
     }
 }

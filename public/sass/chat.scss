@@ -1,32 +1,49 @@
 //the post chat
 .darker{
     background-color: darkgrey;
-    border: 3px solid black;
+    border: 3px solid #000;
     // border-bottom: none;
     padding: 10px;
-    margin: 5px;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 5px;
     box-sizing: border-box;
-
     // &:last-of-type{
     //     border-bottom: 3px solid black;
     // }
 }
 
 .chat-user{
-    color: gold;
+    // color: gold;
+    color:#FFD484;
+}
+
+.chat-text{
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
 }
 
 //post btn
 .panel-footer{
     margin-top: 5px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .main-chat{
-    height: 260px;
-    overflow-y: scroll;
-    overflow: hidden;
+    height: 368px;
+    
+    position: relative;
+    background-color: rgba(255,255,255,.6);
+    legend{
+        text-align: center;
+    }
 }
 
 .chat-container{
-    width: 99%;
+    width: 100%;
+    height: 76%;
+    overflow-y: scroll;
+    overflow: hidden;
 }

@@ -266,16 +266,6 @@ $matchContainer.on('click', '.match-statistc', function () {
             $('#bootstrap-modal').find('.home-team-fouls-committed').append(match.home_team_statistics.fouls_committed);
             $('#bootstrap-modal').find('.away-team-fouls-committed').append(match.away_team_statistics.fouls_committed);
 
-
-
-            for (var property in match.homeStatistic) {
-                if (object.hasOwnProperty(property)) {
-                    // do stuff
-                }
-            }
-
-
-
             $('#bootstrap-modal').modal({
                 show: true
             });
@@ -316,7 +306,7 @@ let creatPost = function (textChat) {
 
     let post = {
         matchid: matchChat.fifa_id,
-        username: userChat.name || 'Anonymous',
+        username: userChat ? userChat.name : 'Anonymous',
         text: textChat
     }
 
@@ -349,14 +339,14 @@ setInterval(function () {
             chats.forEach(element => {
                 // let date = new Date();
                 // let currentDate = date.getHours() + ":" + date.getMinutes();
-
-                res += `<div class="container darker">
-            <span class="chat-user">${element.user_name}: </span> 
+                let username = element.user_name || 'Anonymous';
+                res += `<div class="container1 darker">
+            <span class="chat-user">${username}: </span> 
             <span class="chat-text">${element.text}</span>
         </div>`
             });
             $('.chat-container').append(res);
-            $('.main-chat').scrollTop($('.main-chat').prop('scrollHeight'));
+            $('.chat-container').scrollTop($('.chat-container').prop('scrollHeight'));
         })
         //ajax => get all chat of this mach
         //renderPost 
@@ -431,11 +421,31 @@ $('.post__header__icon_warp__menu__item').click(function () {
 })
 
 $('.deletePost').click(function () {
-    let postId = $(this).closest('.post').data().id;
+    let $post = $(this).closest('.post');
+    let $postId = $post.data().id;
+    let userLocal = JSON.parse(localStorage.getItem('user')).name;
+    let $userPost = $post.find('.post__header__profile_warp__username').text();
+    if (userLocal !== $userPost) {
+        return;
+    }
+
     $.ajax({
         method: 'DELETE',
-        url: '/reviews/delete/' + postId
+        url: '/reviews/delete/' + $postId
     }).then(() => {
         window.location.reload();
     })
+});
+
+
+if (JSON.parse(localStorage.getItem('user'))) {
+    $('.register-item').hide();
+    $('.login-item').hide();
+} else {
+    $('.logout-item').hide();
+}
+
+$('.logout-item').click(function () {
+    localStorage.removeItem('user');
+    window.location.reload();
 });

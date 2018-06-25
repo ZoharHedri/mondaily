@@ -8,16 +8,15 @@ Router.get('/', (req, res) => {
 });
 
 Router.get('/login', (req, res) => {
-    res.render('users/login');
+    res.render('users/login', { title: 'User Login' });
 
 });
 
 
 
 Router.get('/register', (req, res) => {
-    res.render('users/register');
+    res.render('users/register', { title: 'User Registerstion' });
 });
-
 
 Router.post('/register', (req, res) => {
 

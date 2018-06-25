@@ -68,7 +68,7 @@ Router.get('/', (req, res) => {
     getStandingFromDatabase().then((data) => {
         let tables = mapStandingByGroupLetter(data).sort(sortByGroupLetter);
         tables.forEach(sortByPoints);
-        res.render('standing/standing', { tables: tables, title: 'World Cup Standing' })
+        res.render('standing/standing', { title: 'Standing', tables: tables, title: 'World Cup Standing' })
     });
 });
 

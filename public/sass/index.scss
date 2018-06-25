@@ -7,7 +7,7 @@
     background: rgba(0,0,0, .5) url("https://api.fifa.com/api/v1/picture/tournaments-sq-6/254645_w") no-repeat;
 
     /* Set a specific height */
-    height: 400px;
+    height: 100vh;
 
     /* Position and center the image to scale nicely on all screens */
     background-position: center;
@@ -23,4 +23,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+    p{
+        font-size: 24px;
+        color: #343A40;
+        display: inline-block;
+        background-color: rgba(255,255,255, .5);
+    }
 }
